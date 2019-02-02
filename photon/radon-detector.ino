@@ -1,4 +1,4 @@
-// This #include statement was automatically added by the Particle IDE.
+#define USR_FW_RELEASE "1.0.0"
 
 // The included MQTT library only allows a max packet size of 255.  According to the library, the packet
 // size is the total of [MQTT Header(Max:5byte) + Topic Name Length + Topic Name + Message ID(QoS1|2) + Payload]
@@ -188,6 +188,9 @@ void setup() {
     // Read the Device ID
     deviceId = System.deviceID();
     debug_message("Device ID: " + deviceId);
+
+    // User FW release version
+    debug_message("User Firmware Rev: " + String(USR_FW_RELEASE), true);
 
     // Modify the MQTT topics now that we know the device ID.
     mqttSensorOutputTopic.replace("+", deviceId);
